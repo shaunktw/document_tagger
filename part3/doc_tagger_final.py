@@ -45,13 +45,13 @@ def doc_tag_reporter(directory, search):
 			fl_path = file_path_join(directory, fl)
 			text = file_path_opener(fl_path)
 			meta_searches = meta_search(metadata_search, text)
-			keyword = key_word_search(search)
+			keyword_search = key_word_search(search)
 			print "Here's the info for doc {}:".format(fl)
-	       	for k in meta_searches:
-	       		print "{0}: {1} ".format(k.capitalize(), meta_searches[k])
-	        print "*****KEY WORD REPORT*****"
-	        for search in keyword:
-	        	print "\"{0}\": {1}".format(search, find_all_search(keyword[search],text))
+			for k in meta_searches:
+				print "{0}: {1} ".format(k.capitalize(), meta_searches[k])
+			print "\n****KEYWORD REPORT****\n\n"
+			for kw in keyword_search:
+				print "\"{0}\": {1}".format(kw, find_all_search(keyword_search[kw],text))
 	        print '\n\n'
 	        print "***" * 25 
 
