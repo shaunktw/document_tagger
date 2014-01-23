@@ -35,9 +35,11 @@ illustrator_search = re.compile(r'(illustrator:)(?P<illustrator>.*)', re.IGNOREC
 # common problems that you'll encounter as a programmer that enumerate is great for.
 for fl in (os.listdir(directory)): 
     if fl.endswith('.txt'):       
+        
         fl_path = os.path.join(directory, fl)
         with open(fl_path, 'r') as f:
             full_text = f.read()
+       
         author = re.search(author_search, full_text)
         if author:
             author = author.group('author')
@@ -48,6 +50,7 @@ for fl in (os.listdir(directory)):
         if illustrator:
             illustrator = illustrator.group('illustrator')
         title = re.search(title_search, full_text).group('title')
+       
         print "***" * 25
         print "Here's the info for doc {}:".format(fl)
         print "Title:  {}".format(title)
@@ -56,6 +59,7 @@ for fl in (os.listdir(directory)):
         print "Illustrator(s): {}".format(illustrator)
         print "\n"
         print "*****KEY WORD REPORT*****"
+       
         for search in searches:
             print "\"{0}\": {1}".format(search, len(re.findall(searches[search], full_text)))
         print '\n\n'
